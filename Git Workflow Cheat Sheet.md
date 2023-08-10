@@ -51,3 +51,27 @@ git push origin feature/<branch_name>
 1. Once approved, click the "Merge Pull Request" button on GitHub.
 2. Choose "Squash and Merge" or "Rebase and Merge" if desired.
 3. Confirm the merge.
+
+## Create a Release
+
+When you are ready to create a release, follow these steps:
+
+1. Merge the approved feature(s) / develop branch into the release branch:
+
+```bash
+   # Switch to develop branch
+   git checkout develop
+   git pull origin develop
+
+   # Create a release branch and switch
+   git checkout -b release/<release_version>
+
+   # Merge develop into the release branch
+   # Performs the merge operation in the currently checked-out branch (release branch)
+   git merge develop
+
+   # To finish a release branch,
+   # merge the release branch into the main branch:
+   git checkout main
+   git merge release/<release_version>
+```
